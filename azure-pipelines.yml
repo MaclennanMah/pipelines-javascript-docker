@@ -32,15 +32,22 @@ stages:
       name: 'Assignment_2'
     steps:
     - task: Docker@2
-      displayName: Build and push an image to container registry
+      displayName: push an image to container registry
       inputs:
-        command: buildAndPush
+        command: build
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
         arguments: '--platform linux/amd64'
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+    - task: Docker@2
+      displayName: push an image to container registry
+      inputs:
+        containerRegistry: '$(dockerRegistryServiceConnection)'
+        repository: '$(imageRepository)'
+        command: 'push'
+        arguments: '--platform linux/amd64'
 
     - upload: manifests
       artifact: manifests
