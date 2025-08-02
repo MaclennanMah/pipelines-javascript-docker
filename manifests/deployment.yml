@@ -15,5 +15,7 @@ spec:
       containers:
         - name: maclennanmahpipelinesjavascriptdocker 
           image: maclennanmah.azurecr.io/maclennanmahpipelinesjavascriptdocker
+          imagePullPolicy: Always
           ports:
+
           - containerPort: 8080
