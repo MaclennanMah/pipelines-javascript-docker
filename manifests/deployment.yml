@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: maclennanmahpipelinesjavascriptdocker 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: maclennanmahpipelinesjavascriptdocker
+  template:
+    metadata:
+      labels:
+        app: maclennanmahpipelinesjavascriptdocker 
+    spec:
+      containers:
+        - name: maclennanmahpipelinesjavascriptdocker 
+          image: maclennanmah.azurecr.io/maclennanmahpipelinesjavascriptdocker
+          ports:
+          - containerPort: 8080
