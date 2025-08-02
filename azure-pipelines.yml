@@ -35,7 +35,7 @@ stages:
       displayName: build an image
       inputs:
         command: build
-        repository: $(imageRepository)
+        repository: maclennanmahpipelinesjavascriptdocker
         arguments: '--platform linux/amd64'
         dockerfile: $(dockerfilePath)
         tags: |
