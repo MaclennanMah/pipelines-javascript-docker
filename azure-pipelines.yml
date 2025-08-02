@@ -38,6 +38,7 @@ stages:
         repository: $(imageRepository)
         arguments: --platform linux/amd64
         dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
 
@@ -45,8 +46,11 @@ stages:
       displayName: push an image to container registry
       inputs:
         command: 'push'
-        arguments: $(containerRegistry)/$(imageRepository):$(tag)
-        
+        containerRegistry: $(dockerRegistryServiceConnection)
+        repository: $(imageRepository)
+        tags: |
+          $(tag)
+
     - upload: manifests
       artifact: manifests
 
